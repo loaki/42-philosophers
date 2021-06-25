@@ -15,7 +15,7 @@ OBJ_PATH = ./obj
 OBJLIB_PATH = ./obj
 
 INC_NAME = 
-SRC_NAME = 
+SRC_NAME = utils.c main.c
 LIB_NAME = 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJLIB_NAME = $(LIB_NAME:.c=.o)
