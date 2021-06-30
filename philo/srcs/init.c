@@ -12,6 +12,7 @@ void    init_philo(t_data *data)
 		data->philo[i].right_fork = (i + 1) % data->nb_philo;
 		data->philo[i].last_eat = 0;
 		data->philo[i].nb_eat = 0;
+		data->philo[i].data = data;
 	}
 }
 
@@ -24,7 +25,7 @@ int     init_data(t_data *data, int ac, char **av)
 	data->time_die = ft_atoi(av[2]);
 	data->time_eat = ft_atoi(av[3]);
 	data->time_sleep = ft_atoi(av[4]);
-	if (data->nb_philo < 2 || data->time_die <= 0 || data->time_eat <= 0
+	if (data->nb_philo < 0 || data->time_die <= 0 || data->time_eat <= 0 //data->nb_philo < 2
 		|| data->time_sleep <= 0 || (ac == 6 && ft_atoi(av[5]) <= 0))
 		return (0);
 	if (ac == 6 && ft_atoi(av[5]) > 0)

@@ -1,17 +1,17 @@
 #include "philo.h"
 
-size_t	get_time()
+long long	get_time()
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) != 0)
 		return (-1);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	return (long long)(tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 int		free_philo(t_data *data, char *str)
 {
-	printf("%s error\n", str);
+	printf("%s", str);
 	free(data);
 	return(0);
 }

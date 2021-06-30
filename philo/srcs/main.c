@@ -5,19 +5,11 @@ int main(int ac, char **av)
     t_data *data;
 
     if(!(data = malloc(sizeof(t_data))))
-        return(free_philo(data, "malloc"));
+        return(free_philo(data, "malloc error\n"));
     if(!(init_data(data, ac, av)))
-        return(free_philo(data, "arguments"));
+        return(free_philo(data, "arguments error\n"));
     if(!(init_mutex(data)))
-        return(free_philo(data, "mutex"));
+        return(free_philo(data, "mutex error\n"));
     if(!(start(data)))
-        return(free_philo(data, "loop"));
-    printf("%ld\n", data->nb_eat);
-    size_t time;
-    size_t stime;
-    stime = get_time();
-    printf("%lu\n", stime);
-    sleep(1);
-    time = get_time();
-    printf("%lu\n",time - stime);
+        return(free_philo(data, "loop error\n"));
 }

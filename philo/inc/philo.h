@@ -13,7 +13,7 @@ typedef struct s_philo{
     int         left_fork;
     int         right_fork;
     int         nb_eat;
-    size_t      last_eat;
+    long long   last_eat;
     pthread_t	thread_id;
     struct s_data   *data;
 }       t_philo;
@@ -24,7 +24,7 @@ typedef struct s_data{
 	long	    time_eat;
 	long	    time_sleep;
 	long	    nb_eat;
-    size_t      time_start;
+    long long   time_start;
     t_philo     philo[200];
     pthread_mutex_t		forks[200];
 	pthread_mutex_t		writing;
@@ -37,10 +37,14 @@ int     init_data(t_data *data, int ac, char **av);
 int	    init_mutex(t_data *data);
 
 void	*thread_loop(void *philo_ptr);
-int start(t_data *data);
+void	check_philo(t_data *data);
+int     start(t_data *data);
 
-size_t	get_time();
+long long	get_time();
 int		free_philo(t_data *data, char *str);
 int     is_digit(char *str);
+
+void    philo_eat(t_philo *philo);
+void    print_action(t_data *data, t_philo *philo, char* str);
 
 #endif
