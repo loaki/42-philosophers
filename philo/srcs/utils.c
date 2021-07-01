@@ -6,7 +6,7 @@ long long	get_time()
 
 	if (gettimeofday(&tv, NULL) != 0)
 		return (-1);
-	return (long long)(tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
 int		free_philo(t_data *data, char *str)
