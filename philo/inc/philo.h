@@ -12,7 +12,7 @@ typedef struct s_philo{
     int         pos;
     int         left_fork;
     int         right_fork;
-    int         wait_fork;
+    int         eating;
     int         nb_eat;
     long long   last_eat;
     pthread_t	thread_id;
@@ -21,7 +21,6 @@ typedef struct s_philo{
 
 typedef struct s_data{
     int	    nb_philo;
-    int     end;
 	long	    time_die;
 	long	    time_eat;
 	long	    time_sleep;

@@ -10,9 +10,7 @@ void	*thread_loop(void *philo_ptr)
 	philo = (t_philo *)philo_ptr;
 	data = philo->data;
 	print_action(data, philo, "is alive");
-	while (data->philo[data->nb_philo - 1].last_eat == 0)
-		philo->last_eat = get_time();
-	while (get_time() - philo->last_eat < data->time_die)
+	while (data->nb_eat == -1 || philo->nb_eat < data->nb_eat)
 	{
 		philo_eat(philo);
 		print_action(data, philo, "is sleeping");
@@ -33,17 +31,18 @@ void	check_philo(t_data *data)
 		nb_eat = 0;
 		while (++i < data->nb_philo)
 		{
-			if (get_time() - data->philo[i].last_eat > data->time_die)
+			if (!data->philo[i].eating && get_time() - data->philo[i].last_eat > data->time_die)
 			{
-				print_action(data, &(data->philo[i]), "died");
-				data->end = 1;
+        		pthread_mutex_lock(&(data->writing));
+				printf("%-7lli %d %s\n", get_time() - data->time_start, i + 1, "died");
 				return;
 			}
 			if (data->nb_eat != -1 && data->philo[i].nb_eat >= data->nb_eat)
 				nb_eat++;
+			usleep(50);
 		}
 	}
-	data->end = 1;
+    pthread_mutex_lock(&(data->writing));
 }
 
 int start(t_data *data)
@@ -56,7 +55,9 @@ int start(t_data *data)
 	{
 		if (pthread_create(&(data->philo[i].thread_id), NULL, thread_loop, &(data->philo[i])))
 			return (0);
+		pthread_detach(data->philo[i].thread_id);
 		data->philo[i].last_eat = get_time();
+		usleep(100);
 		i++;
 	}
 	check_philo(data);

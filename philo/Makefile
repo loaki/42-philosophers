@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(OBJLIB)
 	${CC} -Wall -Wextra -Werror -I ${INC_PATH} -o ${NAME} ${OBJ} ${OBJLIB}
 
-#valgrind --leak-check=full
+#valgrind --leak-check=fullv
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
