@@ -9,8 +9,8 @@ void    philo_eat(t_philo *philo)
 	print_action(data, philo, "has taken a fork");
 	pthread_mutex_lock(&(data->forks[philo->right_fork]));
 	print_action(data, philo, "has taken a fork");
-    philo->last_eat = get_time();
     philo->eating = 1;
+    philo->last_eat = get_time();
 	print_action(data, philo, "is eating");
     usleep(data->time_eat * 1000);
     pthread_mutex_unlock(&(data->forks[philo->left_fork]));

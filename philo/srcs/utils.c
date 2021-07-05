@@ -13,10 +13,10 @@ int		free_philo(t_data *data, char *str)
 {
 	int i;
 
-	i = 0;
+	i = data->nb_philo;
 	printf("%s", str);
-	while (i < data->nb_philo)
-		pthread_mutex_destroy(&data->forks[i++]);
+	while (--i >= 0)
+		pthread_mutex_destroy(&data->forks[i]);
 	pthread_mutex_destroy(&data->writing);
 	free(data);
 	return(0);

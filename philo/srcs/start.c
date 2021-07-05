@@ -10,7 +10,7 @@ void	*thread_loop(void *philo_ptr)
 	philo = (t_philo *)philo_ptr;
 	data = philo->data;
 	print_action(data, philo, "is alive");
-	while (data->nb_eat == -1 || philo->nb_eat < data->nb_eat)
+	while (1)
 	{
 		philo_eat(philo);
 		print_action(data, philo, "is sleeping");
@@ -39,7 +39,7 @@ void	check_philo(t_data *data)
 			}
 			if (data->nb_eat != -1 && data->philo[i].nb_eat >= data->nb_eat)
 				nb_eat++;
-			usleep(50);
+			usleep(100);
 		}
 	}
     pthread_mutex_lock(&(data->writing));
@@ -57,7 +57,7 @@ int start(t_data *data)
 			return (0);
 		pthread_detach(data->philo[i].thread_id);
 		data->philo[i].last_eat = get_time();
-		usleep(100);
+		usleep(1);
 		i++;
 	}
 	check_philo(data);
