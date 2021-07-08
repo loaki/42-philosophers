@@ -29,9 +29,9 @@ OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJLIB)
-	${CC} -Wall -Wextra -Werror -I ${INC_PATH} -o ${NAME} ${OBJ} ${OBJLIB}
+	${CC} -Wall -Wextra -Werror -pthread -I ${INC_PATH} -o ${NAME} ${OBJ} ${OBJLIB}
 
-#valgrind --leak-check=fullv
+#valgrind --leak-check=full
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true

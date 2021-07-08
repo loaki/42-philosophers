@@ -1,8 +1,8 @@
 #include "philo.h"
 
-void    init_philo(t_data *data)
+void	init_philo(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = data->nb_philo;
 	while (--i >= 0)
@@ -17,12 +17,13 @@ void    init_philo(t_data *data)
 	}
 }
 
-int     init_data(t_data *data, int ac, char **av)
+int	init_data(t_data *data, int ac, char **av)
 {
-    if (ac > 6 || ac <= 4 || !is_digit(av[1]) || !is_digit(av[2]) || !is_digit(av[3]) || !is_digit(av[4]) \
-		 || (ac == 6 && !is_digit(av[5])))
+	if (ac > 6 || ac <= 4 || !is_digit(av[1]) || !is_digit(av[2]) || \
+	!is_digit(av[3]) || !is_digit(av[4]) || (ac == 6 && !is_digit(av[5])))
 		return (0);
 	data->nb_philo = ft_atoi(av[1]);
+	data->end = 0;
 	data->time_die = ft_atoi(av[2]);
 	data->time_eat = ft_atoi(av[3]);
 	data->time_sleep = ft_atoi(av[4]);
@@ -38,7 +39,7 @@ int     init_data(t_data *data, int ac, char **av)
 
 int	init_mutex(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = data->nb_philo;
 	while (--i >= 0)
