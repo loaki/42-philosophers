@@ -1,7 +1,7 @@
 .PHONY: all clean fclean re norme
 
 ##CC = clang-9
-##CC = clang -g ## clang-9 doesn't work on my ubuntu
+##CC = clang -g
 CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
@@ -16,7 +16,7 @@ OBJLIB_PATH = ./obj
 
 INC_NAME = 
 SRC_NAME = utils.c main.c init.c start.c action.c
-LIB_NAME = ft_atoi.c
+LIB_NAME = ft_atoi.c ft_putnbr_fd.c ft_strlen.c ft_putchar_fd.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJLIB_NAME = $(LIB_NAME:.c=.o)
 

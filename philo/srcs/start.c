@@ -12,9 +12,9 @@ void	*thread_loop(void *philo_ptr)
 	while (data->end == 0)
 	{
 		philo_eat(philo);
-		print_action(data, philo, "is sleeping");
+		print_action(data, philo, " is sleeping");
 		sleep_us(data->time_sleep);
-		print_action(data, philo, "is thinking");
+		print_action(data, philo, " is thinking");
 	}
 	return (NULL);
 }
@@ -61,7 +61,7 @@ int	start(t_data *data)
 			return (0);
 		pthread_detach(data->philo[i].thread_id);
 		data->philo[i].last_eat = get_time();
-		usleep(1);
+		usleep(100);
 		i++;
 	}
 	check_philo(data);

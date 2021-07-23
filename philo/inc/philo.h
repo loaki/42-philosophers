@@ -33,7 +33,9 @@ typedef struct s_data{
 }	t_data;
 
 int			ft_atoi(const char *str);
-
+void		ft_putnbr_fd(int n, int fd);
+size_t		ft_strlen(const char *str);
+void		ft_putchar_fd(char c, int fd);
 void		init_philo(t_data *data);
 int			init_data(t_data *data, int ac, char **av);
 int			init_mutex(t_data *data);

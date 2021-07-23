@@ -15,9 +15,12 @@ int	free_philo(t_data *data, char *str)
 
 	i = data->nb_philo;
 	printf("%s", str);
-	while (--i >= 0)
-		pthread_mutex_destroy(&data->forks[i]);
-	pthread_mutex_destroy(&data->writing);
+	if (data->end == 1)
+	{
+		while (--i >= 0)
+			pthread_mutex_destroy(&data->forks[i]);
+		pthread_mutex_destroy(&data->writing);
+	}
 	return (0);
 }
 

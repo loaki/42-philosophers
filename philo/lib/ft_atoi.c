@@ -1,3 +1,5 @@
+#include "../inc/philo.h"
+
 int	ft_atoi(const char *str)
 {
 	int	nb;
